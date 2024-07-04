@@ -1,18 +1,17 @@
 import React from 'react'
 
-import { SafeAreaView, StatusBar, Text } from 'react-native'
+import { SafeAreaView, StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 
-import HomePage from './pages/home'
-import DetailPage from './pages/detail'
-
-import { persistor, store } from './services/store'
-import { globalStyles } from './styles/global'
-import { colors } from './styles/theme'
-import { navigationHeaderOptions } from './constants/navigation'
+import { navigationHeaderOptions } from './src/constants/navigation'
+import HomePage from './src/pages/home'
+import DetailPage from './src/pages/detail'
+import { persistor, store } from './src/services/store'
+import { globalStyles } from './src/styles/global'
+import { colors } from './src/styles/theme'
 
 const Stack = createNativeStackNavigator()
 

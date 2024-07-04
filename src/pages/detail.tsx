@@ -1,4 +1,5 @@
 import { ScrollView, Text, View } from "react-native"
+
 import { globalStyles } from "../styles/global"
 
 type IProps = {

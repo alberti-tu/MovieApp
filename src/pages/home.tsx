@@ -1,11 +1,10 @@
-import * as React from 'react'
+import * as React from "react"
 
 import { Button, ScrollView, Text, View } from "react-native"
 
-import { useAppDispatch, useAppSelector } from '../services/store'
-
-import { globalStyles } from '../styles/global'
-import { fetchMovies, selectCatalogMovies, selectCatalogMoviesIsLoading } from '../data/catalog'
+import { fetchMovies, selectCatalogMovies, selectCatalogMoviesIsLoading } from "../data/catalog"
+import { useAppDispatch, useAppSelector } from "../services/store"
+import { globalStyles } from "../styles/global"
 
 type IProps = {
   navigation: any

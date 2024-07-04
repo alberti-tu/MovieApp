@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-import { getMovies } from '../api/catalog'
-import { RootState } from '../services/store'
-import { DataState } from '../models/global'
-import { Movie } from '../models/movies'
+import { getMovies } from "../api/catalog"
+import { RootState } from "../services/store"
+import { DataState } from "../models/global"
+import { Movie } from "../models/movies"
 
 export const fetchMovies = createAsyncThunk(
   'catalog/getMovies',
