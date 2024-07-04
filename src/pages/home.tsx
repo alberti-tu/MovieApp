@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Button, ScrollView, Text, View } from "react-native"
+import { RefreshControl, ScrollView } from "react-native"
 
 import { fetchMovies, selectCatalogMovies, selectCatalogMoviesIsLoading } from "../data/catalog"
 import { useAppDispatch, useAppSelector } from "../services/store"
@@ -19,22 +19,30 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
   const movies = useAppSelector(selectCatalogMovies)
   const isLoading = useAppSelector(selectCatalogMoviesIsLoading)
 
-  React.useEffect(() => {
+  const getData = React.useCallback(() => {
     dispatch(fetchMovies({ page: 1, reset: true}))
       .unwrap()
         .then(() => {
           dispatch(fetchMovies({ page: 2}))
           dispatch(fetchMovies({ page: 3}))
       })
-  }, [dispatch])
+  }, [])
+
+  React.useEffect(() => {
+    getData()
+  }, [])
 
   return (
-    <View style={globalStyles.container}>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Section key={0} title="Masterpieces">
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      refreshControl={<RefreshControl refreshing={isLoading} onRefresh={getData} />}
+      style={globalStyles.container}
+    >
+      <Section key={0} title="Masterpieces">
+        <ScrollView horizontal>
           {
             movies
-              ?.filter(item => item.vote_average >= 7)
+              ?.filter(item => item.vote_average > 7)
               ?.map(item => (
                 <MovieCard
                   key={item.id}
@@ -43,9 +51,11 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 />
               ))
           }
-        </Section>
+        </ScrollView>
+      </Section>
 
-        <Section key={1} title="To spend the time">
+      <Section key={1} title="To spend the time">
+        <ScrollView horizontal>
           {
             movies
               ?.filter(item => item.vote_average >= 5 && item.vote_average < 7)
@@ -57,9 +67,11 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 />
               ))
           }
-        </Section>
+        </ScrollView>
+      </Section>
 
-        <Section key={2} title="Background for a good nap">
+      <Section key={2} title="Background for a good nap">
+        <ScrollView horizontal>
           {
             movies
               ?.filter(item => item.vote_average < 5)
@@ -71,9 +83,9 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 />
               ))
           }
-        </Section>
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </Section>
+    </ScrollView>
   )
 }
 
