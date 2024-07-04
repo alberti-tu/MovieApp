@@ -29,7 +29,7 @@ function App(): JSX.Element {
                 options={{ ...navigationHeaderOptions, title: 'Movie App' }}
               />
               <Stack.Screen
-                name="Profile"
+                name="MovieDetail"
                 component={DetailPage}
                 options={{ ...navigationHeaderOptions, title: 'Detail' }}
               />

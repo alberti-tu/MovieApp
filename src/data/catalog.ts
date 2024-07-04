@@ -43,5 +43,6 @@ export const slice = createSlice({
 
 export const selectCatalogMovies = (state: RootState): Movie[] => state.catalog.movies.data
 export const selectCatalogMoviesIsLoading = (state: RootState): boolean => state.catalog.movies.isLoading
+export const selectCatalogMoviesById = (state: RootState, id: string): Movie => state.catalog.movies.data?.find((item: Movie) => item.id === id)
 
 export default slice

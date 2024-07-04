@@ -47,7 +47,7 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 <MovieCard
                   key={item.id}
                   data={item}
-                  onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
+                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
                 />
               ))
           }
@@ -63,7 +63,7 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 <MovieCard
                   key={item.id}
                   data={item}
-                  onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
+                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
                 />
               ))
           }
@@ -79,7 +79,7 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                 <MovieCard
                   key={item.id}
                   data={item}
-                  onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
+                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
                 />
               ))
           }
