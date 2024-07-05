@@ -7,4 +7,8 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: colors.background,
     height: '100%',
   },
+  button: {
+    width: '100%',
+    padding: 4,
+  }
 })

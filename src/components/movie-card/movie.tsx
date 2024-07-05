@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { Image, TouchableOpacity } from "react-native"
 
-import { movieStyles } from "./movie.styles"
+import { movieCardStyles } from "./movie.styles"
 import { Movie } from "../../models/movies"
 
 type IProps = {
@@ -12,11 +12,11 @@ type IProps = {
 
 const MovieCard = ({ data, onPress }: IProps): JSX.Element => {
   return (
-    <TouchableOpacity style={movieStyles.container} onPress={() => onPress?.()}>
+    <TouchableOpacity style={movieCardStyles.container} onPress={() => onPress?.()}>
       <Image
         alt={data.original_title}
         source={{ uri: data.poster_path }}
-        style={movieStyles.posterImage}
+        style={movieCardStyles.posterImage}
       />
     </TouchableOpacity>
   )
