@@ -29,6 +29,7 @@ export const movieDetailStyles = StyleSheet.create({
     width: '100%',
   },
   releaseDate: {
+    marginTop: 4,
     color: colors.text,
     fontSize: 12,
   },
@@ -39,7 +40,6 @@ export const movieDetailStyles = StyleSheet.create({
   },
   voteAverage: {
     color: colors.text,
-    marginTop: 8,
     fontSize: 24,
     fontWeight: '800',
   },

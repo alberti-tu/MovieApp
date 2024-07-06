@@ -4,6 +4,7 @@ import { Image, Text, View } from "react-native"
 
 import { castCardStyles } from "./cast.styles"
 import { Cast } from "../../models/movies"
+import { globalStyles } from "../../styles/global"
 
 type IProps = {
   data: Cast
@@ -18,7 +19,7 @@ const CastCard = ({ data }: IProps): JSX.Element => {
         source={{ uri: data.profile_path }}
         style={castCardStyles.posterImage}
       />
-      <Text>{data.name}</Text>
+      <Text style={globalStyles.text}>{data.name}</Text>
     </View>
   )
 }
