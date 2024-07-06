@@ -50,7 +50,7 @@ export const movieDetailStyles = StyleSheet.create({
     marginBottom: 12,
   },
   buttonText: {
-    color: colors.light,
+    color: colors.text,
     fontSize: 16,
     textAlign: 'center'
   },

@@ -10,8 +10,8 @@ type IProps = {
 
 const WishButton = ({ onPress }: IProps): JSX.Element => {
   return (
-    <TouchableOpacity onPress={() => onPress?.()}>
-      <Text>Wish list</Text>
+    <TouchableOpacity onPress={() => onPress?.()} style={wishButtonStyles.container}>
+      <Text style={wishButtonStyles.button}>Wish list</Text>
     </TouchableOpacity>
   )
 }

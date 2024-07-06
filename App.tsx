@@ -22,7 +22,7 @@ function App(): JSX.Element {
     <PersistGate persistor={persistor}>
       <Provider store={store}>
         <SafeAreaView style={globalStyles.container}>
-          <StatusBar backgroundColor={colors.statusBar} barStyle="light-content" />
+          <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
           <NavigationContainer>
             <Stack.Navigator screenOptions={navigationHeaderOptions}>
               <Stack.Screen name="Home" component={HomePage} options={{ title: 'Movie App' }} />
