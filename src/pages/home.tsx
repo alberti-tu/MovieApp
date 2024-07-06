@@ -35,11 +35,11 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
         data: movies?.filter(item => item.vote_average > 7)
       },
       {
-        title: 'To spend the time',
+        title: 'To a good movie night',
         data: movies?.filter(item => item.vote_average >= 5 && item.vote_average < 7)
       },
       {
-        title: 'Background for a good nap',
+        title: 'Give them a change',
         data: movies?.filter(item => item.vote_average < 5)
       },
     ]

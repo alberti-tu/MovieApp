@@ -5,13 +5,19 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { movieDetailStyles } from "./movie.styles"
 import { Movie } from "../../models/movies"
 import { globalStyles } from "../../styles/global"
+import { useAppDispatch, useAppSelector } from "../../services/store"
+import { selectCatalogWishListById, updateWishItem } from "../../data/catalog"
+import CastCard from "../cast-card/cast"
+import Section from "../section/section"
 
 type IProps = {
   data: Movie
 }
 
 const MovieDetail = ({ data }: IProps): JSX.Element => {
-  const [isFavorite, setIsFavorite] = React.useState<boolean>(false)
+  const dispatch = useAppDispatch()
+
+  const isFavorite = useAppSelector(state => selectCatalogWishListById(state, data?.id))
 
   if (!data) {
     return <></>
@@ -42,12 +48,17 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
             </Text>
           </View>
           <View style={movieDetailStyles.rightColumn}>
-            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={() => setIsFavorite(state => !state)}>
+            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={() => dispatch(updateWishItem(data.id))}>
               <Text style={movieDetailStyles.buttonText}>{isFavorite ? 'Remove from wish list': 'Add to wish list'}</Text>
             </TouchableOpacity>
             <Text style={movieDetailStyles.overview}>{data.overview}</Text>
           </View>
         </View>
+        <Section title="Cast">
+          <View style={globalStyles.cardContainer}>
+            {data.casts.map(item => <CastCard key={item.id} data={item}/>)}
+          </View>
+        </Section>
       </View>
 
     </ScrollView>

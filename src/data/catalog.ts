@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { getMovies } from "../api/catalog"
 import { RootState } from "../services/store"
@@ -13,16 +13,22 @@ export const fetchMovies = createAsyncThunk(
 
 interface CatalogState {
   movies: DataState<Movie[]>
+  wishList: Record<string, boolean>
 }
 
 const initialState: CatalogState = {
-  movies: { isLoading: false }
+  movies: { isLoading: false },
+  wishList: {}
 }
 
 export const slice = createSlice({
   name: 'catalog',
   initialState,
-  reducers: {},
+  reducers: {
+    updateWishItem(state, action: PayloadAction<string>) {
+      state.wishList[action.payload] = !state.wishList[action.payload]
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchMovies.pending, (state, action) => {
@@ -41,8 +47,12 @@ export const slice = createSlice({
   }
 })
 
+export const { updateWishItem } = slice.actions
+
 export const selectCatalogMovies = (state: RootState): Movie[] => state.catalog.movies.data
 export const selectCatalogMoviesIsLoading = (state: RootState): boolean => state.catalog.movies.isLoading
 export const selectCatalogMoviesById = (state: RootState, id: string): Movie => state.catalog.movies.data?.find((item: Movie) => item.id === id)
+export const selectCatalogWishList = (state: RootState, id: string): boolean => state.catalog.wishList
+export const selectCatalogWishListById = (state: RootState, id: string): boolean => state.catalog.wishList[id]
 
 export default slice

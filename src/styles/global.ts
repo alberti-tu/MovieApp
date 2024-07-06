@@ -11,6 +11,12 @@ export const globalStyles = StyleSheet.create({
     width: '100%',
     padding: 4,
   },
+  cardContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
   text: {
     color: colors.text,
   }

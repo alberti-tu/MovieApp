@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet } from "react-native"
 import { colors } from "../../styles/theme"
 
-const { height, width } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 export const movieDetailStyles = StyleSheet.create({
   container: {
