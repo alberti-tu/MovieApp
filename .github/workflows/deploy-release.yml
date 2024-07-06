@@ -142,4 +142,3 @@ jobs:
         fail_on_unmatched_files: false
         files: |
           **/*.apk
-          **/*.ipa
