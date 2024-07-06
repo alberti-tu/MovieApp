@@ -1,3 +1,5 @@
+import * as React from "react"
+
 import { View } from "react-native"
 
 import { globalStyles } from "../styles/global"
@@ -12,6 +14,13 @@ type IProps = {
 
 const DetailPage = ({ navigation, route }: IProps): JSX.Element => {
   const data = useAppSelector(state => selectCatalogMoviesById(state, route.params.id))
+
+  React.useEffect(() => {
+    if (data.original_title) {
+      navigation.setOptions({ title: data.original_title })
+    }
+  }, [data?.original_title])
+
   return (
     <View style={globalStyles.container}>
       <MovieDetail data={data} />

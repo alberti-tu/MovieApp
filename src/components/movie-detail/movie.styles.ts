@@ -11,11 +11,6 @@ export const movieDetailStyles = StyleSheet.create({
     height: 192,
     width: width
   },
-  header: {
-    fontSize: 24,
-    color: colors.light,
-    fontWeight: '800'
-  },
   body: {
     flex: 1,
     flexDirection: 'row',
@@ -35,15 +30,19 @@ export const movieDetailStyles = StyleSheet.create({
     aspectRatio: 2/3,
     width: '100%',
   },
+  releaseDate: {
+    color: colors.text,
+    fontSize: 12,
+  },
   info: {
     color: colors.text,
-    marginTop: 12,
     fontSize: 16,
-    lineHeight: 20,
+    marginTop: 8,
   },
   voteAverage: {
-    fontSize: 26,
-    lineHeight: 48,
+    color: colors.text,
+    marginTop: 8,
+    fontSize: 24,
     fontWeight: '800',
   },
   button: {

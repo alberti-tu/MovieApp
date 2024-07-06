@@ -19,6 +19,10 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
 
   const isFavorite = useAppSelector(state => selectCatalogWishListById(state, data?.id))
 
+  const updateWishItemHandler = React.useCallback(() => {
+    dispatch(updateWishItem(data.id))
+  }, [dispatch, data.id])
+
   if (!data) {
     return <></>
   }
@@ -32,8 +36,6 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
         style={movieDetailStyles.backdropImage}
       />
       <View style={movieDetailStyles.container}>
-        <Text style={movieDetailStyles.header}>{data.original_title}</Text>
-        <Text style={globalStyles.text}>{data.release_date}</Text>
         <View style={movieDetailStyles.body}>
           <View style={movieDetailStyles.leftColumn}>
             <Image
@@ -42,13 +44,12 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
               source={{ uri: data.poster_path }}
               style={movieDetailStyles.posterImage}
             />
-            <Text style={movieDetailStyles.info}>
-              Vote average:{'\n'}
-              <Text style={movieDetailStyles.voteAverage}>{data.vote_average}</Text>
-            </Text>
+            <Text style={movieDetailStyles.releaseDate}>{data.release_date}</Text>
+            <Text style={movieDetailStyles.info}>Vote average:</Text>
+            <Text style={movieDetailStyles.voteAverage}>{data.vote_average}</Text>
           </View>
           <View style={movieDetailStyles.rightColumn}>
-            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={() => dispatch(updateWishItem(data.id))}>
+            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={updateWishItemHandler}>
               <Text style={movieDetailStyles.buttonText}>{isFavorite ? 'Remove from wish list': 'Add to wish list'}</Text>
             </TouchableOpacity>
             <Text style={movieDetailStyles.overview}>{data.overview}</Text>
