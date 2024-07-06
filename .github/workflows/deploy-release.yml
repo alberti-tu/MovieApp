@@ -61,7 +61,7 @@ jobs:
 
     - name: Install dependencies
       if: steps.cache-node.outputs.cache-hit != 'true'
-      run: cd npm ci
+      run: npm ci
 
   android:
     name: Build Android
@@ -122,7 +122,7 @@ jobs:
       run: cd ios && pod install   
 
     - name: Set app version
-      run: cd npm pkg set version=${{ needs.settings.outputs.version }}
+      run: npm pkg set version=${{ needs.settings.outputs.version }}
 
   release:
     name: Publish Release
