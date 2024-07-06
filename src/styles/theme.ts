@@ -5,5 +5,5 @@ export const colors = {
   text: '#F5F5F5',
   statusBar: '#A93226',
   light: '#FFFFFF',
-  dark: "#000000"
+  dark: '#000000',
 }

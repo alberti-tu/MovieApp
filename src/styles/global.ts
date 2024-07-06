@@ -10,5 +10,8 @@ export const globalStyles = StyleSheet.create({
   button: {
     width: '100%',
     padding: 4,
+  },
+  text: {
+    color: colors.text,
   }
 })

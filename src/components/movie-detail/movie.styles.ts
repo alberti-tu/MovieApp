@@ -7,6 +7,10 @@ export const movieDetailStyles = StyleSheet.create({
   container: {
     padding: 12,
   },
+  backdropImage: {
+    height: 192,
+    width: width
+  },
   header: {
     fontSize: 24,
     color: colors.light,
@@ -31,6 +35,17 @@ export const movieDetailStyles = StyleSheet.create({
     aspectRatio: 2/3,
     width: '100%',
   },
+  info: {
+    color: colors.text,
+    marginTop: 12,
+    fontSize: 16,
+    lineHeight: 20,
+  },
+  voteAverage: {
+    fontSize: 26,
+    lineHeight: 48,
+    fontWeight: '800',
+  },
   button: {
     backgroundColor: colors.secondary,
     marginBottom: 12,
@@ -41,8 +56,9 @@ export const movieDetailStyles = StyleSheet.create({
     textAlign: 'center'
   },
   overview: {
+    color: colors.text,
     fontSize: 16,
     lineHeight: 20,
-    textAlign: 'justify'
+    textAlign: 'justify',
   }
 })

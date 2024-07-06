@@ -18,25 +18,38 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
   }
 
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic" style={movieDetailStyles.container}>
-      <Text style={movieDetailStyles.header}>{data.original_title}</Text>
-      <Text>{data.release_date}</Text>
-      <View style={movieDetailStyles.body}>
-        <View style={movieDetailStyles.leftColumn}>
-          <Image
-            alt={data.original_title}
-            source={{ uri: data.poster_path }}
-            style={movieDetailStyles.posterImage}
-          />
-          <Text>Vote average: {data.vote_average}</Text>
-        </View>
-        <View style={movieDetailStyles.rightColumn}>
-          <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={() => setIsFavorite(state => !state)}>
-            <Text style={movieDetailStyles.buttonText}>{isFavorite ? 'Remove from wish list': 'Add to wish list'}</Text>
-          </TouchableOpacity>
-          <Text style={movieDetailStyles.overview}>{data.overview}</Text>
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <Image
+        alt={data.original_title}
+        resizeMethod="resize"
+        source={{ uri: data.backdrop_path }}
+        style={movieDetailStyles.backdropImage}
+      />
+      <View style={movieDetailStyles.container}>
+        <Text style={movieDetailStyles.header}>{data.original_title}</Text>
+        <Text style={globalStyles.text}>{data.release_date}</Text>
+        <View style={movieDetailStyles.body}>
+          <View style={movieDetailStyles.leftColumn}>
+            <Image
+              alt={data.original_title}
+              resizeMethod="resize"
+              source={{ uri: data.poster_path }}
+              style={movieDetailStyles.posterImage}
+            />
+            <Text style={movieDetailStyles.info}>
+              Vote average:{'\n'}
+              <Text style={movieDetailStyles.voteAverage}>{data.vote_average}</Text>
+            </Text>
+          </View>
+          <View style={movieDetailStyles.rightColumn}>
+            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={() => setIsFavorite(state => !state)}>
+              <Text style={movieDetailStyles.buttonText}>{isFavorite ? 'Remove from wish list': 'Add to wish list'}</Text>
+            </TouchableOpacity>
+            <Text style={movieDetailStyles.overview}>{data.overview}</Text>
+          </View>
         </View>
       </View>
+
     </ScrollView>
   )
 }

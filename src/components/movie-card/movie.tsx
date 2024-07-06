@@ -15,6 +15,7 @@ const MovieCard = ({ data, onPress }: IProps): JSX.Element => {
     <TouchableOpacity style={movieCardStyles.container} onPress={() => onPress?.()}>
       <Image
         alt={data.original_title}
+        resizeMethod="resize"
         source={{ uri: data.poster_path }}
         style={movieCardStyles.posterImage}
       />

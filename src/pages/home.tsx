@@ -28,6 +28,23 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
       })
   }, [])
 
+  const sections = React.useMemo(() => {
+    return [
+      {
+        title: 'Masterpieces',
+        data: movies?.filter(item => item.vote_average > 7)
+      },
+      {
+        title: 'To spend the time',
+        data: movies?.filter(item => item.vote_average >= 5 && item.vote_average < 7)
+      },
+      {
+        title: 'Background for a good nap',
+        data: movies?.filter(item => item.vote_average < 5)
+      },
+    ]
+  }, [movies])
+
   React.useEffect(() => {
     getData()
   }, [])
@@ -38,53 +55,23 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
       refreshControl={<RefreshControl refreshing={isLoading} onRefresh={getData} />}
       style={globalStyles.container}
     >
-      <Section key={0} title="Masterpieces">
-        <ScrollView horizontal>
-          {
-            movies
-              ?.filter(item => item.vote_average > 7)
-              ?.map(item => (
-                <MovieCard
-                  key={item.id}
-                  data={item}
-                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
-                />
-              ))
-          }
-        </ScrollView>
-      </Section>
-
-      <Section key={1} title="To spend the time">
-        <ScrollView horizontal>
-          {
-            movies
-              ?.filter(item => item.vote_average >= 5 && item.vote_average < 7)
-              ?.map(item => (
-                <MovieCard
-                  key={item.id}
-                  data={item}
-                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
-                />
-              ))
-          }
-        </ScrollView>
-      </Section>
-
-      <Section key={2} title="Background for a good nap">
-        <ScrollView horizontal>
-          {
-            movies
-              ?.filter(item => item.vote_average < 5)
-              ?.map(item => (
-                <MovieCard
-                  key={item.id}
-                  data={item}
-                  onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
-                />
-              ))
-          }
-        </ScrollView>
-      </Section>
+      {
+        Object.values(sections)
+          .filter(item => item.data?.length > 0)
+          .map((item, index) =>
+            <Section key={index} title={item.title}>
+              <ScrollView horizontal>
+                {item.data.map(item => (
+                  <MovieCard
+                    key={item.id}
+                    data={item}
+                    onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
+                  />
+                ))}
+              </ScrollView>
+            </Section>
+          )
+      }
     </ScrollView>
   )
 }
