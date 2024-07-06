@@ -45,6 +45,8 @@ export const movieDetailStyles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.secondary,
+    borderRadius: 12,
+    paddingVertical: 8,
     marginBottom: 12,
   },
   buttonText: {
@@ -57,5 +59,5 @@ export const movieDetailStyles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     textAlign: 'justify',
-  }
+  },
 })

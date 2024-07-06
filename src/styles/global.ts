@@ -16,6 +16,7 @@ export const globalStyles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    marginVertical: 8,
   },
   text: {
     color: colors.text,

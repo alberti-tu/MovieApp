@@ -32,7 +32,7 @@ const WishPage = ({ navigation, route }: IProps): JSX.Element => {
             key={item.id}
             data={item}
             onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
-            width={150}
+            width={100}
           />))}
       </View>
     </ScrollView>

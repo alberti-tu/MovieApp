@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../services/store"
 import { selectCatalogWishListById, updateWishItem } from "../../data/catalog"
 import CastCard from "../cast-card/cast"
 import Section from "../section/section"
+import { colors } from "../../styles/theme"
 
 type IProps = {
   data: Movie
@@ -24,6 +25,16 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
       dispatch(updateWishItem(data.id))
     }
   }, [dispatch, data?.id])
+
+  const category = React.useMemo(() => {
+    if (data?.vote_average > 7) {
+      return colors.good
+    } else if (data?.vote_average >= 5 && data?.vote_average < 7) {
+      return colors.regular
+    } else  {
+      return colors.bad
+    }
+  }, [data])
 
   if (!data) {
     return <></>
@@ -48,10 +59,10 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
             />
             <Text style={movieDetailStyles.releaseDate}>{data.release_date}</Text>
             <Text style={movieDetailStyles.info}>Vote average:</Text>
-            <Text style={movieDetailStyles.voteAverage}>{data.vote_average}</Text>
+            <Text style={[movieDetailStyles.voteAverage, { color: category }]}>{data.vote_average}</Text>
           </View>
           <View style={movieDetailStyles.rightColumn}>
-            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button]} onPress={updateWishItemHandler}>
+            <TouchableOpacity style={[globalStyles.button, movieDetailStyles.button, { backgroundColor: category }]} onPress={updateWishItemHandler}>
               <Text style={movieDetailStyles.buttonText}>{isFavorite ? 'Remove from wish list': 'Add to wish list'}</Text>
             </TouchableOpacity>
             <Text style={movieDetailStyles.overview}>{data.overview}</Text>
@@ -63,7 +74,6 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
           </View>
         </Section>
       </View>
-
     </ScrollView>
   )
 }
