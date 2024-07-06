@@ -1,11 +1,9 @@
-import { Dimensions, StyleSheet } from "react-native"
-
-const { width } = Dimensions.get('window')
+import { StyleSheet } from "react-native"
 
 export const castCardStyles = StyleSheet.create({
   container: {
     margin: 4,
-    width: 0.25 * width,
+    width: '25%',
   },
   posterImage: {
     borderRadius: 12,

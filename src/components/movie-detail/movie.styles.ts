@@ -1,7 +1,5 @@
-import { Dimensions, StyleSheet } from "react-native"
+import { StyleSheet } from "react-native"
 import { colors } from "../../styles/theme"
-
-const { width } = Dimensions.get('window')
 
 export const movieDetailStyles = StyleSheet.create({
   container: {
@@ -9,7 +7,7 @@ export const movieDetailStyles = StyleSheet.create({
   },
   backdropImage: {
     height: 192,
-    width: width
+    width: '100%'
   },
   body: {
     flex: 1,
@@ -19,10 +17,10 @@ export const movieDetailStyles = StyleSheet.create({
     padingHorizontal: 8
   },
   leftColumn: {
-    width: 0.4 * width - 12,
+    width: '40%',
   },
   rightColumn: {
-    width: 0.6 * width - 12,
+    width: '60%',
     paddingHorizontal: 12,
   },
   posterImage: {
