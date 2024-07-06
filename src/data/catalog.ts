@@ -26,14 +26,19 @@ export const slice = createSlice({
   initialState,
   reducers: {
     updateWishItem(state, action: PayloadAction<string>) {
-      state.wishList[action.payload] = !state.wishList[action.payload]
+      if (!state.wishList[action.payload]) {
+        state.wishList[action.payload] = true
+      } else {
+        delete state.wishList[action.payload]
+      }
     },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchMovies.pending, (state, action) => {
         if (action.meta.arg?.reset || !state.movies.data?.length) {
-          state.movies.data = []
+          const favorites = Object.keys(state.wishList)
+          state.movies.data = state.movies.data?.filter(item => favorites.includes(item.id)) ?? []
         }
         state.movies.isLoading = true
       })
@@ -41,7 +46,7 @@ export const slice = createSlice({
         state.movies.data = state.movies.data?.concat(action.payload.data ?? [])
         state.movies.isLoading = false
       })
-      .addCase(fetchMovies.rejected, (state, action) => {
+      .addCase(fetchMovies.rejected, state => {
         state.movies.isLoading = false
       })
   }
@@ -52,7 +57,7 @@ export const { updateWishItem } = slice.actions
 export const selectCatalogMovies = (state: RootState): Movie[] => state.catalog.movies.data
 export const selectCatalogMoviesIsLoading = (state: RootState): boolean => state.catalog.movies.isLoading
 export const selectCatalogMoviesById = (state: RootState, id: string): Movie => state.catalog.movies.data?.find((item: Movie) => item.id === id)
-export const selectCatalogWishList = (state: RootState, id: string): boolean => state.catalog.wishList
+export const selectCatalogWishList = (state: RootState): boolean => state.catalog.wishList
 export const selectCatalogWishListById = (state: RootState, id: string): boolean => state.catalog.wishList[id]
 
 export default slice

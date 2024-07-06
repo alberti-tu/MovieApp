@@ -8,6 +8,7 @@ import { globalStyles } from "../styles/global"
 
 import Section from "../components/section/section"
 import MovieCard from "../components/movie-card/movie"
+import WishButton from "../components/wishButton/wishButton"
 
 type IProps = {
   navigation: any
@@ -46,6 +47,12 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
   }, [movies])
 
   React.useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <WishButton onPress={() => navigation.navigate('Wish')} />,
+    })
+  }, [navigation])
+
+  React.useEffect(() => {
     getData()
   }, [])
 
@@ -66,6 +73,7 @@ const HomePage = ({ navigation }: IProps): JSX.Element => {
                     key={item.id}
                     data={item}
                     onPress={() => navigation.navigate('MovieDetail', { id: item?.id })}
+                    width={128}
                   />
                 ))}
               </ScrollView>

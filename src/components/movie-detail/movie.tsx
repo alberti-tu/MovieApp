@@ -20,8 +20,10 @@ const MovieDetail = ({ data }: IProps): JSX.Element => {
   const isFavorite = useAppSelector(state => selectCatalogWishListById(state, data?.id))
 
   const updateWishItemHandler = React.useCallback(() => {
-    dispatch(updateWishItem(data.id))
-  }, [dispatch, data.id])
+    if (data) {
+      dispatch(updateWishItem(data.id))
+    }
+  }, [dispatch, data?.id])
 
   if (!data) {
     return <></>

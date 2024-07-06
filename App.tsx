@@ -7,11 +7,13 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 
 import { navigationHeaderOptions } from './src/constants/navigation'
-import HomePage from './src/pages/home'
-import DetailPage from './src/pages/detail'
 import { persistor, store } from './src/services/store'
 import { globalStyles } from './src/styles/global'
 import { colors } from './src/styles/theme'
+
+import DetailPage from './src/pages/detail'
+import HomePage from './src/pages/home'
+import WishPage from './src/pages/wish'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +26,7 @@ function App(): JSX.Element {
           <NavigationContainer>
             <Stack.Navigator screenOptions={navigationHeaderOptions}>
               <Stack.Screen name="Home" component={HomePage} options={{ title: 'Movie App' }} />
+              <Stack.Screen name="Wish" component={WishPage} options={{ title: 'Whish movie list' }} />
               <Stack.Screen name="MovieDetail" component={DetailPage} />
             </Stack.Navigator>
           </NavigationContainer>

@@ -8,11 +8,12 @@ import { Movie } from "../../models/movies"
 type IProps = {
   data: Movie
   onPress?: () => void
+  width?: number
 }
 
-const MovieCard = ({ data, onPress }: IProps): JSX.Element => {
+const MovieCard = ({ data, onPress, width = 0 }: IProps): JSX.Element => {
   return (
-    <TouchableOpacity style={movieCardStyles.container} onPress={() => onPress?.()}>
+    <TouchableOpacity style={{ ...movieCardStyles.container, width }} onPress={() => onPress?.()}>
       <Image
         alt={data.original_title}
         resizeMethod="resize"
