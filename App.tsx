@@ -22,17 +22,9 @@ function App(): JSX.Element {
         <SafeAreaView style={globalStyles.container}>
           <StatusBar backgroundColor={colors.statusBar} barStyle="light-content" />
           <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Home"
-                component={HomePage}
-                options={{ ...navigationHeaderOptions, title: 'Movie App' }}
-              />
-              <Stack.Screen
-                name="MovieDetail"
-                component={DetailPage}
-                options={{ ...navigationHeaderOptions, title: 'Detail' }}
-              />
+            <Stack.Navigator screenOptions={navigationHeaderOptions}>
+              <Stack.Screen name="Home" component={HomePage} options={{ title: 'Movie App' }} />
+              <Stack.Screen name="MovieDetail" component={DetailPage} />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaView>
