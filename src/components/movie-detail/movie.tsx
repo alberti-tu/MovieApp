@@ -5,20 +5,19 @@ import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { movieDetailStyles } from "./movie.styles"
 import { Movie } from "../../models/movies"
 import { globalStyles } from "../../styles/global"
-import { useAppDispatch, useAppSelector } from "../../services/store"
-import { selectCatalogWishListById, updateWishItem } from "../../data/catalog"
+import { useAppDispatch } from "../../services/store"
+import { updateWishItem } from "../../data/catalog"
 import CastCard from "../cast-card/cast"
 import Section from "../section/section"
 import { colors } from "../../styles/theme"
 
 type IProps = {
   data: Movie
+  isFavorite?: boolean
 }
 
-const MovieDetail = ({ data }: IProps): JSX.Element => {
+const MovieDetail = ({ data, isFavorite }: IProps): JSX.Element => {
   const dispatch = useAppDispatch()
-
-  const isFavorite = useAppSelector(state => selectCatalogWishListById(state, data?.id))
 
   const updateWishItemHandler = React.useCallback(() => {
     if (data) {
