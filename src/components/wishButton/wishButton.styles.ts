@@ -10,6 +10,6 @@ export const wishButtonStyles = StyleSheet.create({
     borderRadius: 12,
   },
   button: {
-    color: colors.text
+    color: colors.secondaryText
   }
 })

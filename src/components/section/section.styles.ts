@@ -10,8 +10,9 @@ export const sectionStyles = StyleSheet.create({
     margin: 12,
   },
   header: {
-    color: colors.text,
+    color: colors.primaryText,
     fontSize: 18,
+    fontWeight: '500',
     marginHorizontal: 16,
     marginVertical: 4,
   },

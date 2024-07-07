@@ -20,7 +20,7 @@ export const globalStyles = StyleSheet.create({
     marginVertical: 8,
   },
   text: {
-    color: colors.text,
+    color: colors.primaryText,
   },
   textCentered: {
     fontSize: 18,

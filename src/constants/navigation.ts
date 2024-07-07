@@ -4,7 +4,7 @@ export const navigationHeaderOptions: any = {
   headerStyle: {
     backgroundColor: colors.primary,
   },
-  headerTintColor: colors.text,
+  headerTintColor: colors.secondaryText,
   headerTitleStyle: {
     fontWeight: 'bold',
   },

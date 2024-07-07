@@ -13,7 +13,7 @@ export const movieDetailStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginVertical: 16,
+    marginTop: 6,
     padingHorizontal: 8
   },
   leftColumn: {
@@ -30,16 +30,16 @@ export const movieDetailStyles = StyleSheet.create({
   },
   releaseDate: {
     marginTop: 4,
-    color: colors.text,
-    fontSize: 12,
+    color: colors.primaryText,
+    fontSize: 14,
   },
   info: {
-    color: colors.text,
+    color: colors.primaryText,
     fontSize: 16,
     marginTop: 8,
   },
   voteAverage: {
-    color: colors.text,
+    color: colors.primaryText,
     fontSize: 24,
     fontWeight: '800',
   },
@@ -50,12 +50,12 @@ export const movieDetailStyles = StyleSheet.create({
     marginBottom: 12,
   },
   buttonText: {
-    color: colors.text,
+    color: colors.secondaryText,
     fontSize: 16,
     textAlign: 'center'
   },
   overview: {
-    color: colors.text,
+    color: colors.primaryText,
     fontSize: 16,
     lineHeight: 20,
     textAlign: 'justify',
