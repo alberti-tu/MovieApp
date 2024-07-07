@@ -84,7 +84,7 @@ jobs:
         key: node-${{ hashFiles('/package-lock.json') }}
 
     - name: Run tests
-      run: npm run test
+      run: npm run tests
 
   android:
     name: Build Android
