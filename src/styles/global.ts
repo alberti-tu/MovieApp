@@ -4,6 +4,7 @@ import { colors } from "./theme"
 
 export const globalStyles = StyleSheet.create({
   container: {
+    position: 'relative',
     backgroundColor: colors.background,
     height: '100%',
   },
@@ -20,5 +21,11 @@ export const globalStyles = StyleSheet.create({
   },
   text: {
     color: colors.text,
+  },
+  textCentered: {
+    fontSize: 18,
+    paddingHorizontal: 12,
+    paddingTop: 120,
+    textAlign: 'center'
   }
 })

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ScrollView, View } from "react-native"
+import { ScrollView, Text, View } from "react-native"
 
 import { globalStyles } from "../styles/global"
 import { useAppSelector } from "../services/store"
@@ -26,6 +26,11 @@ const WishPage = ({ navigation, route }: IProps): JSX.Element => {
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic" style={globalStyles.container}>
+      {!wishList.length && (
+        <Text style={[globalStyles.text, globalStyles.textCentered]}>
+          You don't have any wished movie yet, you can add them from the detail movie page
+        </Text>
+      )}
       <View style={globalStyles.cardContainer}>
         {wishList.map(item => (
           <MovieCard
