@@ -46,3 +46,11 @@ To execute the iOS version on virtual machine or physical device execute:
 cd ios && pod install 
 npm run ios
 ```
+
+## 4. Testing
+
+To execute the unit testing execute:
+
+```bash
+npm run tests
+```

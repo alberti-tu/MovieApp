@@ -1,14 +1,32 @@
-/**
- * @format
- */
+import "react-native"
+import * as React from "react"
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+import { render } from "@testing-library/react-native"
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import { getMovies } from "../src/api/catalog"
+import MovieCard from "../src/components/movie-card/movie"
+import { Movie } from "../src/models/movies"
+import CastCard from "../src/components/cast-card/cast"
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+let movies: Movie[]
+
+beforeAll(async () => {
+  const response = await getMovies(1)
+  movies = response.data
 });
+
+it("API service is alive", async () => {
+  expect(movies?.length).toBe(20)
+})
+
+it("Movie card", async () => {
+  render(<MovieCard data={movies?.[0]} />)
+})
+
+it("Movie detail", async () => {
+  render(<MovieCard data={movies?.[0]} />)
+})
+
+it("Cast card", async () => {
+  render(<CastCard data={movies?.[0]?.casts?.[0]} />)
+})
